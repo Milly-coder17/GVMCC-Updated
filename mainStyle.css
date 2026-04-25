@@ -1,0 +1,286 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.topHeader {
+    background-color: #0C4B8E;
+    font-family: "Lora", sans-serif;
+    color: white;
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.sideBar {
+    height: 100%;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: #e6e6e6;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navButton, .programButton {
+    padding: 12px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.navButton:hover, .programButton:hover {
+    background: #d0d0d0;
+}
+
+.navButton.active, .programButton:active {
+    background: #0C4B8E;
+    color: white;
+}
+
+.mainBody {
+    display: flex;
+    height: 100%;
+    overflow: visible;
+}
+
+.contentArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContentHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 64px;
+    background-color: white;
+    z-index: 1000;
+}
+
+#searchStudentBar,
+#searchClassOffering,
+#searchProgram,
+#searchGuardianBar,
+#searchSectionBar,
+#searchSubjectBar,
+#searchInstructorBar,
+#searchScheduleBar {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.addButton {
+    padding: 10px 15px;
+    background: #0C4B8E;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#students .mainContentArea,
+#subjects .mainContentArea,
+#classOfferings .mainContentArea,
+#programs .mainContentArea,
+#instructors .mainContentArea,
+#guardians .mainContentArea,
+#sections .mainContentArea,
+#schedules .mainContentArea {
+    width: 100%;
+    padding: 10px 20px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    background: #0C4B8E;
+    color: white;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.navItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown {
+    display: none;
+}
+
+.navItem.open .dropdown {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.subButton {
+    padding: 10px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.subButton:hover {
+    background: #d0d0d0;
+}
+
+.subButton.active {
+    background: #0C4B8E;
+    color: white;
+}
+
+.arrow {
+    float: right;
+    transition: transform 0.3s;
+}
+
+.navItem.open .arrow {
+    transform: rotate(90deg);
+}
+
+.formModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.formContainer {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.formGrid input,
+.formGrid select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.fullWidth {
+    grid-column: span 2;
+}
+
+.formButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#closeStudentForm {
+    background: #ccc;
+}
+
+.formButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.formButtons button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.saveFormButton {
+    background: #0C4B8E;
+    color: white;
+}
+
+.saveFormButton:hover {
+    background: #0a3d73;
+    transform: translateY(-1px);
+}
+
+.saveFormButton:active {
+    transform: scale(0.97);
+}
+
+#closeStudentForm {
+    background: #e0e0e0;
+    color: #333;
+}
+
+#closeStudentForm:hover {
+    background: #cfcfcf;
+    transform: translateY(-1px);
+}
+
+#closeStudentForm:active {
+    transform: scale(0.97);
+}

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mainStyle.css">
+    <title>GMVCC-Siruma Enrollment System</title>
+</head>
+<body>
+    
+    <div class="topHeader">
+        <h1>GMVCC-Siruma Enrollment System</h1>
+    </div>
+
+    <div class="mainBody">
+        <nav class="sideBar">
+            <div class="navItem">
+                <button class="navButton hasDropdown"> Students & Guardians <span class="arrow">▶</span>
+                </button>
+                <div class="dropdown">
+                    <button class="subButton active" data-page="students">Students</button>
+                    <button class="subButton" data-page="guardians">Guardians</button>
+                </div>
+            </div>
+            <div class="navItem">
+                <button class="navButton hasDropdown">
+                    Class Offerings
+                    <span class="arrow">▶</span>
+                </button>
+
+                <div class="dropdown">
+                    <button class="subButton" data-page="classOfferings">Class Offerings</button>
+                    <button class="subButton" data-page="subjects">Subjects</button>
+                    <button class="subButton" data-page="sections">Sections</button>
+                    <button class="subButton" data-page="instructors">Instructors</button>
+                    <button class="subButton" data-page="schedules">Schedules</button>
+                </div>
+            </div>
+            <button class="programButton" data-page="programs">Programs</button>
+        </nav>
+
+    <main class="contentArea">
+        <div class="page active" id="students">
+            <div class="mainContentHeader">
+                <h2 id="pageTitle">Students List</h2>
+                <input type="text" id="searchStudentBar" placeholder="Search student...">
+                <button class="addButton" id="addMainBtn">Add Student</button>
+            </div>
+
+            <div class="mainContentArea">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40px; text-align: center;">ID</th>
+                            <th style="width: 120px;">LRN</th>
+                            <th style="width: 70px;">Program</th>
+                            <th style="width: 200px;">Name</th>
+                            <th style="width: 130px;">Birthdate</th>
+                            <th style="width: 100px;">Gender</th>
+                            <th style="width: 300px;">Address</th>
+                            <th style="width: 150px;">Contact Number</th>
+                            <th style="width: 150px;">Guardian</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page" id="guardians">
+            <div class="mainContentHeader">
+                <h2 id="pageTitle">Guardians List</h2>
+                <input type="text" id="searchGuardianBar" placeholder="Search guardian...">
+                <button class="addButton" id="addMainBtn">Add Guardian</button>
+            </div>
+
+            <div class="mainContentArea">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40px; text-align: center;">ID</th>
+                            <th style="width: 200px;">Name</th>
+                            <th style="width: 150px;">Contact Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="guardiansTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page" id="classOfferings">
+            <div class="mainContentHeader">
+                <h2 id="pageTitle">Class Offerings List</h2>
+                <input type="text" id="searchClassOffering" placeholder="Search class offering...">
+                <button class="addButton" id="addMainBtn">Add Class Offering</button>
+            </div>
+
+            <div class="mainContentArea">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30px; text-align: center;">Room</th>
+                            <th style="width: 30px; text-align: center;">Section</th>
+                            <th style="width: 120px; text-align: center;">Subject</th>
+                            <th style="width: 50px; text-align: center;">Schedule</th>
+                            <th style="width: 70px; text-align: center;">Instructor</th>
+                            <th style="width: 40px; text-align: center;">School Year</th>
+                            <th style="width: 20px; text-align: center;">Sem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="offeringsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page" id="subjects">
+            <div class="mainContentHeader">
+                <h2 id="pageTitle">Subjects List</h2>
+                <input type="text" id="searchSubjectBar" placeholder="Search subject...">
+                <button class="addButton" id="addSubjectBtn">Add Subject</button>
+            </div>
+
+            <div class="mainContentArea">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40px; text-align: center;">Subject Code</th>
+                            <th style="width: 120px;">Title</th>
+                            <th style="width: 120px;">Units</th>
+                            <th style="width: 120px;">Prerequisite</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subjectsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page" id="sections">
+            <div class="mainContentHeader">
+                <h2 id="pageTitle">Sections List</h2>
+                <input type="text" id="searchSectionBar" placeholder="Search section...">
+                <button class="addButton" id="addMainBtn">Add Section</button>
+            </div>
+
+            <div class="mainContentArea">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40px; text-align: center;">ID</th>
+                            <th style="width: 120px;">Section Name</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sectionsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page" id="instructors">
+            <div class="mainContentHeader">
+                <h2 id="pageTitle">Instructors List</h2>
+                <input type="text" id="searchInstructorBar" placeholder="Search instructor...">
+                <button class="addButton" id="addMainBtn">Add Instructor</button>
+            </div>
+
+            <div class="mainContentArea">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40px; text-align: center;">ID</th>
+                            <th style="width: 170px;">Name</th>
+                            <th style="width: 100px;">Department</th>
+                            <th style="width: 80px;">Contact Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="instructorsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page" id="schedules">
+            <div class="mainContentHeader">
+                <h2 id="pageTitle">Schedules List</h2>
+                <input type="text" id="searchScheduleBar" placeholder="Search schedule...">
+                <button class="addButton" id="addMainBtn">Add Schedule</button>
+            </div>
+
+            <div class="mainContentArea">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40px; text-align: center;">ID</th>
+                            <th style="width: 120px;">Day</th>
+                            <th style="width: 70px;">Time Start</th>
+                            <th style="width: 70px;">Time End</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedulesTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page" id="programs">
+            <div class="mainContentHeader">
+                <h2 id="pageTitle">Programs List</h2>
+                <input type="text" id="searchProgram" placeholder="Search program...">
+                <button class="addButton" id="addMainBtn">Add Program</button>
+            </div>
+
+            <div class="mainContentArea">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20px; text-align: center;">ID</th>
+                            <th style="width: 140px; text-align: center;">Program Name</th>
+                            <th style="width: 140px; text-align: center;">Major</th>
+                        </tr>
+                    </thead>
+                    <tbody id="programsTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="formModal" id="studentFormModal">
+        <div class="formContainer">
+            <h3>Add Student</h3>
+
+            <div class="formGrid">
+                <input type="text" id="lrn" placeholder="LRN">
+
+                <select id="gender">
+                    <option value="">Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+
+                <input type="text" id="firstName" placeholder="First Name">
+                <input type="text" id="middleName" placeholder="Middle Name">
+
+                <input type="text" id="lastName" placeholder="Last Name">
+                <input type="date" id="birthdate">
+
+                <input type="text" id="contact" placeholder="Contact Number">
+
+                <select id="program">
+                    <option value="">Program</option>
+                    <option>BSIT</option>
+                    <option>BSBA</option>
+                    <option>BSED</option>
+                    <option>BSHM</option>
+                </select>
+
+                <input type="text" id="address" placeholder="Address" class="fullWidth">
+
+                <select id="studentGuardianSelect"></select>
+                <input type="text" id="studentRelationshipType" placeholder="Relationship Type">
+            </div>
+
+            <div class="formButtons">
+                <button class="saveFormButton" id="saveStudent">Save</button>
+                <button id="closeStudentForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="formModal" id="guardianFormModal">
+        <div class="formContainer">
+            <h3>Add Guardian</h3>
+
+            <div class="formGrid">
+                <input type="text" id="gFirstName" placeholder="First Name">
+                <input type="text" id="gMiddleName" placeholder="Middle Name">
+
+                <input type="text" id="gLastName" placeholder="Last Name">
+                <input type="text" id="gContact" placeholder="Contact Number">
+            </div>
+
+            <div class="formButtons">
+                <button class="saveFormButton" id="saveGuardian">Save</button>
+                <button id="closeGuardianForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="formModal" id="classOfferingFormModal">
+        <div class="formContainer">
+            <h3>Add Class Offering</h3>
+
+            <div class="formGrid">
+
+                <input type="text" id="coRoom" placeholder="Room">
+
+                <select id="coSection"></select>
+                <select id="coSubject"></select>
+                <select id="coSchedule"></select>
+                <select id="coInstructor"></select>
+
+                <input type="text" id="coSchoolYear" placeholder="School Year (e.g. 2025-2026)">
+                <input type="text" id="coSem" placeholder="Semester (1st / 2nd)">
+            </div>
+
+            <div class="formButtons">
+                <button class="saveFormButton" id="saveClassOffering">Save</button>
+                <button id="closeClassOfferingForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="formModal" id="subjectFormModal">
+        <div class="formContainer">
+            <h3>Add Subject</h3>
+
+            <div class="formGrid">
+                <input type="text" id="subCode" placeholder="Subject Code">
+                <input type="text" id="subUnits" placeholder="Units">
+
+                <input type="text" id="subTitle" placeholder="Title" class="fullWidth">
+
+                <select id="subPrerequisite" class="fullWidth">
+                    <option value="">Prerequisite (optional)</option>
+                </select>
+            </div>
+
+            <div class="formButtons">
+                <button class="saveFormButton" id="saveSubject">Save</button>
+                <button id="closeSubjectForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="formModal" id="sectionFormModal">
+        <div class="formContainer">
+            <h3>Add Section</h3>
+
+            <div class="formGrid">
+                <input type="text" id="sectionName" placeholder="Section Name" class="fullWidth">
+            </div>
+
+            <div class="formButtons">
+                <button class="saveFormButton" id="saveSection">Save</button>
+                <button id="closeSectionForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="formModal" id="instructorFormModal">
+        <div class="formContainer">
+            <h3>Add Instructor</h3>
+
+            <div class="formGrid">
+                <input type="text" id="insName" placeholder="Full Name" class="fullWidth">
+
+                <input type="text" id="insDepartment" placeholder="Department">
+                <input type="text" id="insContact" placeholder="Contact Number">
+            </div>
+
+            <div class="formButtons">
+                <button class="saveFormButton" id="saveInstructor">Save</button>
+                <button id="closeInstructorForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="formModal" id="scheduleFormModal">
+        <div class="formContainer">
+            <h3>Add Schedule</h3>
+
+            <div class="formGrid">
+                <input type="text" id="schDay" placeholder="Day">
+
+                <input type="time" id="schStart">
+                <input type="time" id="schEnd">
+            </div>
+
+            <div class="formButtons">
+                <button class="saveFormButton" id="saveSchedule">Save</button>
+                <button id="closeScheduleForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="formModal" id="programFormModal">
+        <div class="formContainer">
+            <h3>Add Program</h3>
+
+            <div class="formGrid">
+                <input type="text" id="progName" placeholder="Program Name" class="fullWidth">
+                <input type="text" id="progMajor" placeholder="Major" class="fullWidth">
+            </div>
+
+            <div class="formButtons">
+                <button class="saveFormButton" id="saveProgram">Save</button>
+                <button id="closeProgramForm">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
