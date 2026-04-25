@@ -119,7 +119,7 @@ function renderStudents(tableArray) {
         );
 
         const guardianDisplay = guardian
-            ? `${guardian.FirstName} ${guardian.MiddleName} ${guardian.LastName} - ${student.RelationshipType}`
+            ? `${guardian.FirstName} ${guardian.LastName} - ${student.RelationshipType}`
             : "-";
 
         row.innerHTML = `
@@ -211,18 +211,6 @@ subButtons.forEach(button => {
     });
 });
 
-const studentModal = document.getElementById("studentFormModal");
-const addStudentBtn = document.querySelector("#students #addMainBtn");
-const closeStudentBtn = document.getElementById("closeStudentForm");
-
-if(addStudentBtn){
-    addStudentBtn.onclick = () => studentModal.style.display = "flex";
-}
-
-if(closeStudentBtn){
-    closeStudentBtn.onclick = () => studentModal.style.display = "none";
-}
-
 function loadGuardians() {
     const guardianSelect = document.getElementById("guardian");
 
@@ -239,32 +227,6 @@ function loadGuardians() {
 }
 
 loadGuardians();
-
-const saveStudentBtn = document.getElementById("saveStudent");
-
-if(saveStudentBtn){
-    saveStudentBtn.onclick = () => {
-
-        const newStudent = {
-            ID: (studentsArray.length + 1).toString(),
-            LRN: document.getElementById("lrn").value,
-            Program: document.getElementById("program").value,
-            FirstName: document.getElementById("firstName").value,
-            MiddleName: document.getElementById("middleName").value,
-            LastName: document.getElementById("lastName").value,
-            Birthdate: document.getElementById("birthdate").value,
-            Gender: document.getElementById("gender").value,
-            Address: document.getElementById("address").value,
-            "Contact Number": document.getElementById("contact").value,
-            GuardianID: document.getElementById("guardian").value
-        };
-
-        studentsArray.push(newStudent);
-        renderStudents(studentsArray);
-
-        studentModal.style.display = "none";
-    };
-}
 
 const guardianModal = document.getElementById("guardianFormModal");
 const addGuardianBtn = document.querySelector("#guardians #addMainBtn");
@@ -813,19 +775,56 @@ function loadGuardianDropdown() {
     const select = document.getElementById("studentGuardianSelect");
     if (!select) return;
 
-    select.innerHTML = "";
+    select.innerHTML = '<option value="">Select Guardian</option>';
 
     guardiansArray.forEach(g => {
         const option = document.createElement("option");
-
         option.value = g.ID;
-        option.textContent = `${g.FirstName} ${g.MiddleName} ${g.LastName}`;
-
+        option.textContent = `${g.FirstName} ${g.LastName}`;
         select.appendChild(option);
     });
 }
 
-addStudentBtn.onclick = () => {
-    loadGuardianDropdown();
-    studentModal.style.display = "flex";
-};
+const studentModal = document.getElementById("studentFormModal");
+const addStudentBtn = document.getElementById("addStudentBtn");
+const closeStudentBtn = document.getElementById("closeStudentForm");
+
+if (addStudentBtn) {
+    addStudentBtn.onclick = () => {
+        loadGuardianDropdown();
+        studentModal.style.display = "flex";
+    };
+}
+
+if (closeStudentBtn) {
+    closeStudentBtn.onclick = () => {
+        studentModal.style.display = "none";
+    };
+}
+
+const saveStudentBtn = document.getElementById("saveStudent");
+
+if (saveStudentBtn) {
+    saveStudentBtn.onclick = () => {
+
+        const newStudent = {
+            ID: String(studentsArray.length + 1),
+            LRN: document.getElementById("lrn").value,
+            Program: document.getElementById("program").value,
+            FirstName: document.getElementById("firstName").value,
+            MiddleName: document.getElementById("middleName").value,
+            LastName: document.getElementById("lastName").value,
+            Birthdate: document.getElementById("birthdate").value,
+            Gender: document.getElementById("gender").value,
+            Address: document.getElementById("address").value,
+            "Contact Number": document.getElementById("contact").value,
+            GuardianID: document.getElementById("studentGuardianSelect").value,
+            RelationshipType: document.getElementById("studentRelationshipType").value
+        };
+
+        studentsArray.push(newStudent);
+        renderStudents(studentsArray);
+
+        studentModal.style.display = "none";
+    };
+}

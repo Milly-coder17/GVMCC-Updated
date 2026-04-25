@@ -46,7 +46,7 @@
             <div class="mainContentHeader">
                 <h2 id="pageTitle">Students List</h2>
                 <input type="text" id="searchStudentBar" placeholder="Search student...">
-                <button class="addButton" id="addMainBtn">Add Student</button>
+                <button class="addButton" id="addStudentBtn">Add Student</button>
             </div>
 
             <div class="mainContentArea">
@@ -223,24 +223,30 @@
         </div>
     </div>
     
-    <div class="formModal" id="studentFormModal">
+    <div class="formModal" id="studentFormModal" style="display:none;">
         <div class="formContainer">
             <h3>Add Student</h3>
 
             <div class="formGrid">
                 <input type="text" id="lrn" placeholder="LRN">
 
-                <select id="gender">
-                    <option value="">Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-
                 <input type="text" id="firstName" placeholder="First Name">
                 <input type="text" id="middleName" placeholder="Middle Name">
-
                 <input type="text" id="lastName" placeholder="Last Name">
-                <input type="date" id="birthdate">
+
+                <div class="formHint">
+                    <span>Gender</span>
+                    <select id="gender">
+                        <option value="">Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+
+                <div class="formHint">
+                    <span>Birthdate</span>
+                    <input type="date" id="birthdate">
+                </div>
 
                 <input type="text" id="contact" placeholder="Contact Number">
 
@@ -254,7 +260,11 @@
 
                 <input type="text" id="address" placeholder="Address" class="fullWidth">
 
-                <select id="studentGuardianSelect"></select>
+                <div class="formHint">
+                    <span>Guardian</span>
+                    <select id="studentGuardianSelect"></select>
+                </div>
+
                 <input type="text" id="studentRelationshipType" placeholder="Relationship Type">
             </div>
 

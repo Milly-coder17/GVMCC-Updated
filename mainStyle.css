@@ -284,3 +284,34 @@ th {
 #closeStudentForm:active {
     transform: scale(0.97);
 }
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.formGroup label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+}
+
+.formGroup input,
+.formGroup select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.formHint {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.formHint span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #444;
+}
